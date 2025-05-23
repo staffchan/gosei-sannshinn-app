@@ -3,7 +3,7 @@ import pandas as pd
 import datetime
 
 # データ読み込み
-df = pd.read_excel("1970年代_命数テンプレート統合.xlsx")
+df = pd.read_excel("meisuu_data_1970s.xlsx")
 
 # タイプ判定関数
 def get_gosei_type(year, meisuu):
