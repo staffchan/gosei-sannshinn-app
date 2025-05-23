@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
-import datetime
 
-# データ読み込み
+# データ読み込み（ファイル名は半角・英語に統一しておくこと！）
 df = pd.read_excel("meisuu_data_1970s.xlsx")
 
 # タイプ判定関数
@@ -24,22 +23,35 @@ def get_gosei_type(year, meisuu):
         base = "不明"
     return f"{kin_or_gin}の{base}"
 
-# UI
+# --- UI ---
 st.title("五星三心占い｜命数＆タイプ診断")
 
-birthday = st.date_input(
-    "生年月日を入力してください",
-    min_value=datetime.date(1900, 1, 1),
-    max_value=datetime.date(2035, 12, 31)
-)
+# 西暦・月・日を分けて入力
+col1, col2, col3 = st.columns(3)
+with col1:
+    year = st.selectbox("西暦", list(range(1970, 1980)))
+with col2:
+    month = st.selectbox("月", list(range(1, 13)))
+with col3:
+    day = st.selectbox("日", list(range(1, 32)))
 
-year, month, day = birthday.year, birthday.month, birthday.day
+# 検索処理
 row = df[(df["年"] == year) & (df["月"] == month) & (df["日"] == day)]
 
 if not row.empty:
-    meisuu = int(row["命数2"].values[0])
-    gossei_type = get_gosei_type(year, meisuu)
-    st.success(f"🎯 あなたの命数は **{meisuu}番** です！")
-    st.markdown(f"✨ あなたの五星三心タイプは **{gossei_type}** です。")
+    m1 = int(row["命数1"].values[0])
+    m2 = int(row["命数2"].values[0])
+    m3 = int(row["命数3"].values[0])
+    type_name = get_gosei_type(year, m2)
+
+    st.success(f"🎯 あなたの命数（現在・個性）は **{m2}番** です")
+    st.markdown(f"✨ あなたの五星三心タイプは **{type_name}**")
+
+    st.markdown("#### 🔍 命数の内訳")
+    st.markdown(f"""
+    - 🕰 **第一の命数（過去・ベースとなる性質）**：{m1}
+    - 🌟 **第二の命数（現在・個性）**：{m2}
+    - 🚀 **第三の命数（未来・才能）**：{m3}
+    """)
 else:
     st.warning("この日付のデータはまだ登録されていません。")
