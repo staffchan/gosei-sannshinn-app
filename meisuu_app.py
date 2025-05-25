@@ -78,5 +78,5 @@ def type_to_filename(type_name):
 # ▼ タイプ判定後の表示に追加 ▼
 filename = type_to_filename(type_name)
 if filename:
-    image_path = os.path.join("images", filename)
-    st.image(image_path, caption=f"{type_name}のイメージ", use_column_width=True)
+    image_path = f"images/{filename}"
+    st.image(image_path, caption=f"{type_name}のイメージ", use_container_width=True)
