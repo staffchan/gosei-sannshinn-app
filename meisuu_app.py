@@ -6,7 +6,7 @@ import os
 
 # データ読み込み
 df = pd.read_excel("meisuu_data_1970s.xlsx")
-df_types = pd.read_excel("五星三心_タイプ情報テンプレート.xlsx")
+df_types = pd.read_excel("type_info_template.xlsx")
 
 # タイプ名 → 画像ファイル名
 def type_to_filename(type_name):
