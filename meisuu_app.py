@@ -55,3 +55,28 @@ if not row.empty:
     """)
 else:
     st.warning("この日付のデータはまだ登録されていません。")
+import os
+
+# タイプ名から画像ファイル名を返す関数
+def type_to_filename(type_name):
+    mapping = {
+        "金の羅針盤": "kin_rashinban.png",
+        "銀の羅針盤": "gin_rashinban.png",
+        "金のインディアン": "kin_indian.png",
+        "銀のインディアン": "gin_indian.png",
+        "金の鳳凰": "kin_phoenix.png",
+        "銀の鳳凰": "gin_phoenix.png",
+        "金の時計": "kin_clock.png",
+        "銀の時計": "gin_clock.png",
+        "金のカメレオン": "kin_chameleon.png",
+        "銀のカメレオン": "gin_chameleon.png",
+        "金のイルカ": "kin_dolphin.png",
+        "銀のイルカ": "gin_dolphin.png"
+    }
+    return mapping.get(type_name)
+
+# ▼ タイプ判定後の表示に追加 ▼
+filename = type_to_filename(type_name)
+if filename:
+    image_path = os.path.join("images", filename)
+    st.image(image_path, caption=f"{type_name}のイメージ", use_column_width=True)
