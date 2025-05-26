@@ -103,8 +103,8 @@ if not type_row.empty:
         traits = type_row["基本性格"].values[0]
         st.markdown(traits)
 
-    filename = type_to_filename(type_name)
-    if filename:
+        filename = type_to_filename(type_name)
+        if filename:
         image_path = f"images/{filename}"
         st.image(image_path, caption=f"{type_name}のイメージ", use_container_width=True)
 else:
