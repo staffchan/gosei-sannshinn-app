@@ -93,7 +93,7 @@ desire = get_desire(m2)
 st.markdown("### 🔥 あなたに強い欲の傾向")
 st.markdown(f"**{desire}**")
     
-    type_row = df_types[df_types["タイプ名"] == type_name]
+type_row = df_types[df_types["タイプ名"] == type_name]
 if not type_row.empty:
         st.markdown("### 💫 持っている星")
         stars = type_row["持っている星"].values[0]
