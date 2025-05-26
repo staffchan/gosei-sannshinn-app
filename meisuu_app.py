@@ -105,7 +105,7 @@ if not type_row.empty:
 
         filename = type_to_filename(type_name)
         if filename:
-        image_path = f"images/{filename}"
-        st.image(image_path, caption=f"{type_name}のイメージ", use_container_width=True)
+            image_path = f"images/{filename}"
+            st.image(image_path, caption=f"{type_name}のイメージ", use_container_width=True)
 else:
     st.warning("この日付のデータはまだ登録されていません。")
