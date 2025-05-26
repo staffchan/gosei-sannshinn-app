@@ -45,6 +45,20 @@ def get_gosei_type(year, meisuu):
         base = "不明"
     return f"{kin_or_gin}の{base}"
 
+# 欲の傾向判定関数
+def get_desire(meisuu):
+    last_digit = meisuu % 10
+    if last_digit in [1, 2]:
+        return "自我欲（自分を中心に考えたい欲）"
+    elif last_digit in [3, 4]:
+        return "食欲・性欲（楽しみたい欲）"
+    elif last_digit in [5, 6]:
+        return "金欲・財欲（得をしたい欲）"
+    elif last_digit in [7, 8]:
+        return "権力・支配欲（上に立ちたい欲）"
+    else:  # 9 or 0
+        return "創作欲（才能を発揮したい欲）"
+
 # UI構築
 st.title("五星三心占い｜命数＆タイプ診断")
 
@@ -74,7 +88,12 @@ if not row.empty:
     - 🌟 **第二の命数（現在・個性）**：{m2}
     - 🚀 **第三の命数（未来・才能）**：{m3}
     ''')
-
+    
+# 欲の傾向を表示
+desire = get_desire(m2)
+st.markdown("### 🔥 あなたに強い欲の傾向")
+st.markdown(f"**{desire}**")
+    
     type_row = df_types[df_types["タイプ名"] == type_name]
     if not type_row.empty:
         st.markdown("### 💫 持っている星")
