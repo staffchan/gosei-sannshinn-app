@@ -78,7 +78,7 @@ if not row.empty:
     m1 = int(row["命数1"].values[0])
     m2 = int(row["命数2"].values[0])
     m3 = int(row["命数3"].values[0])
-    type_name = get_gosei_type(year, m2)
+type_name = get_gosei_type(year, m2)
 
     st.markdown(f"## 🌟 あなたの五星三心タイプ：**{type_name}**")
     st.markdown("### 🔍 命数の内訳")
@@ -94,7 +94,7 @@ st.markdown("### 🔥 あなたに強い欲の傾向")
 st.markdown(f"**{desire}**")
     
     type_row = df_types[df_types["タイプ名"] == type_name]
-    if not type_row.empty:
+if not type_row.empty:
         st.markdown("### 💫 持っている星")
         stars = type_row["持っている星"].values[0]
         st.markdown(f"<div style='background-color:#f0f8ff;padding:10px;border-radius:8px'>{stars}</div>", unsafe_allow_html=True)
