@@ -81,7 +81,6 @@ if not row.empty:
     type_name = get_gosei_type(year, m2)
 
     st.markdown(f"## 🌟 あなたの五星三心タイプ：**{type_name}**")
-
     st.markdown("### 🔍 命数の内訳")
     st.markdown(f'''
     - 🕰 **第一の命数（過去・ベースとなる性質）**：{m1}
