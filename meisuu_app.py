@@ -78,7 +78,7 @@ if not row.empty:
     m1 = int(row["命数1"].values[0])
     m2 = int(row["命数2"].values[0])
     m3 = int(row["命数3"].values[0])
-type_name = get_gosei_type(year, m2)
+    type_name = get_gosei_type(year, m2)
 
     st.markdown(f"## 🌟 あなたの五星三心タイプ：**{type_name}**")
     st.markdown("### 🔍 命数の内訳")
